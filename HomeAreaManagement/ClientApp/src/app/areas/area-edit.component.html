@@ -1,0 +1,70 @@
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Edit Area</h2>
+  <form [formGroup]="areaEditForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <div class="form-group row  mb-3 mt-3">
+      <label for="id" class="col-md-3 col-form-label">Id</label>
+      <div class="col-md-8">
+        <input type="text" formControlName="id" placeholder="Id" name="id" class="form-control" id="id" readonly>
+      </div>
+    </div>
+
+    <div class="form-group row  mb-3 mt-3">
+      <label for="name" class="col-md-3 col-form-label">Name</label>
+      <div class="col-md-8">
+        <input type="text"
+               formControlName="name"
+               placeholder="Name (required)"
+               name="name"
+               class="form-control" id="name"
+               [ngClass]="{'is-invalid': (areaEditForm.get('name').touched ||
+                                        areaEditForm.get('name').dirty) &&
+                                        !areaEditForm.get('name').valid }">
+        <span class="invalid-feedback">
+          <span *ngIf="areaEditForm.get('name').errors?.required">
+            Please enter the Area Name.
+          </span>
+          <span *ngIf="areaEditForm.get('name').errors?.maxLength">
+            Name must be less than 200 characters.
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group row  mb-3 mt-3">
+      <label for="createdOn" class="col-md-3 col-form-label">Created On</label>
+      <div class="col-md-8">
+        <input formControlName="createdOn" placeholder="Created On" name="createdOn" class="form-control" id="createdOn" readonly>
+      </div>
+      </div>
+
+    <div class="form-group row  mb-3 mt-3">
+      <label for="createdBy" class="col-md-3 col-form-label">Created By</label>
+      <div class="col-md-8">
+        <input type="text" formControlName="createdBy" placeholder="Created By" name="createdBy" class="form-control" id="createdBy" readonly>
+      </div>
+      </div>
+
+    <div class="form-group row  mb-3 mt-3">
+      <label for="updatedOn" class="col-md-3 col-form-label">Updated On</label>
+      <div class="col-md-8">
+        <input formControlName="updatedOn" placeholder="Updated On" name="updatedOn" class="form-control" id="updatedOn" readonly>
+      </div>
+      </div>
+
+    <div class="form-group row  mb-3 mt-3">
+      <label for="updatedBy" class="col-md-3 col-form-label">Updated On</label>
+      <div class="col-md-8">
+        <input formControlName="updatedBy" placeholder="Updated By" name="updatedBy" class="form-control" id="updatedBy" readonly>
+      </div>
+      </div>
+
+    <button class="btn btn-success mb-3 mt-3"
+            type="submit"
+            [title]="areaEditForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+            [disabled]="!areaEditForm.valid">
+      Update
+    </button>
+  </form>
+</div>
+

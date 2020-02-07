@@ -1,0 +1,38 @@
+<h1 id="tableLabel">Area List</h1>
+
+<div class='row mb-2'>
+  <div class='col-md-2'>Filter by Name:</div>
+  <div class='col-md-4'>
+    <input type='text'
+           [(ngModel)]='searchFilter' />
+  </div>
+</div>
+
+<p *ngIf="!area"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="area">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>CreatedOn</th>
+      <th>CreatedBy</th>
+      <th>UpdatedOn</th>
+      <th>UpdatedBy</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let area of filteredAreas">
+      <td>{{ area.id }}</td>
+      <td>{{ area.name }}</td>
+      <td>{{ area.createdOn | date:'dd/MM/yyyy, h:mm a' }}</td>
+      <td>{{ area.createdBy }}</td>
+      <td>{{ area.updatedOn | date:'dd/MM/yyyy, h:mm a' }}</td>
+      <td>{{ area.updatedBy }}</td>
+      <td><a [routerLink]="['/area-edit', area.id]" class="btn btn-primary">Edit</a></td>
+      <td><a href="/area-list" (click) = "deleteProduct(area)" class="btn btn-danger">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
