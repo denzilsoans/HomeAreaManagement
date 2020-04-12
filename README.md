@@ -1,7 +1,7 @@
 # Home Area Management
 
 This Application is a Demo project to facilitate the management of areas inside a house. 
-Its consists of a list page that shows all the areas in a house, in addition to an edit page that allows the user to amend any information
+Its consists of a list page that shows all the areas in a house and an edit page that allows the user to amend any information
 related to an area.
 
 ## Tools & Technologies
